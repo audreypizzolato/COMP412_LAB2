@@ -2,6 +2,7 @@ import java.io.File;
 
 public class Main{
     public static void main(String[] args){
+        long startProgram = System.nanoTime();
         System.out.println("Running");
         boolean hFlag = false;
         boolean rFlag = false;
@@ -59,14 +60,19 @@ public class Main{
             Scanner scan = new Scanner(flag);
             File f = new File(args[file]);
             scan.readFile(f);
-            System.out.println("scanning");
+            //System.out.println("scanning");
+            long startScan = System.nanoTime();
             scan.scanFile();
-            for(int i=0; i<scan.lexeme.size(); i++){
-                System.out.println("\""+scan.lexeme.get(i)+"\"\t"+scan.category.get(i));
-            }
+            long endScan = System.nanoTime() - startScan;
+            System.out.println("Scan Time: " + endScan);
+
             if(flag==1 || flag==2){
-                System.out.println("parsing");
+                //System.out.println("parsing");
+                long startParse = System.nanoTime();
                 success = scan.parser();
+                long endParse = System.nanoTime() - startParse;
+                System.out.println("Parse Time: " + endParse);
+
                 if(flag==2 && success){
                     System.out.println("Parse Succeeded, finding " + "ILOC expressions");
                 }
@@ -76,7 +82,9 @@ public class Main{
         }
         
         
-        
+        long endProgram = System.nanoTime() - startProgram;
+        System.out.println("Total Time: " + endProgram);
+
         
     }
 }

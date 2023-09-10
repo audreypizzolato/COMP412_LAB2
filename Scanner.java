@@ -153,6 +153,7 @@ public class Scanner{
                     //System.out.println(c + " " + currentState);
                     
                     if(c == '\n' || c=='\t' || c==' ' || c==',' || (c=='/' && currentState != 0)){
+                        long startParse = System.nanoTime();
                         
                         if(rollback == 39){
                             break;
@@ -214,7 +215,7 @@ public class Scanner{
                             if(c == ','){
                                 word = ""+c;
                                 rollback = 36;
-                                currentState = 0;
+                                currentState = 36;
                                 continue;
                             }
                             
@@ -231,8 +232,11 @@ public class Scanner{
                             System.err.println("ERROR "+scanLineNum+":");
                             break;
                         }
+                        long endParse = System.nanoTime() - startParse;
+                        System.out.println("Finding End State Parse Time: " + endParse);
                     }
                     else{
+                        long startParse = System.nanoTime();
                         // see if character can be mapped
                         if(charToInt.containsKey(c)){
                             transitionChar = charToInt.get(c);
@@ -317,6 +321,8 @@ public class Scanner{
                             System.err.println("ERROR "+scanLineNum+":");
                             
                         }
+                        long endParse = System.nanoTime() - startParse;
+                        System.out.println("Transition Parse Time: " + endParse);
                     }
                     
                     
@@ -324,6 +330,8 @@ public class Scanner{
                 }
                 lexeme.add("\\n");
                 category.add(10);
+                rollback=0;
+                currentState=0;
                 if(flag == 3){
                     System.out.println(scanLineNum + ": <10" + ", \"\\n" + "\" >");
                 }
@@ -335,6 +343,7 @@ public class Scanner{
             if(flag == 3){
                 System.out.println(scanLineNum + ": <9" + ", \"" + "\" >");
             }
+            
         } catch (Exception ex) {
         }
        

@@ -1,0 +1,532 @@
+Assuming your lab1 executable is at ./412fe
+Running 522 tests...
+â /clear/courses/comp412/students/ILOC/blocks/lab2/block7.i passed!
+â /clear/courses/comp412/students/ILOC/blocks/lab2/block12.i passed!
+â /clear/courses/comp412/students/ILOC/blocks/lab2/block9.i passed!
+â /clear/courses/comp412/students/ILOC/blocks/lab2/block8.i passed!
+â /clear/courses/comp412/students/ILOC/blocks/lab2/block6.i passed!
+â /clear/courses/comp412/students/ILOC/blocks/lab2/block11.i passed!
+â /clear/courses/comp412/students/ILOC/blocks/lab2/block5.i passed!
+â /clear/courses/comp412/students/ILOC/blocks/lab2/block4.i passed!
+â /clear/courses/comp412/students/ILOC/blocks/lab2/block3.i passed!
+â /clear/courses/comp412/students/ILOC/blocks/lab2/block2.i passed!
+â /clear/courses/comp412/students/ILOC/blocks/lab2/block10.i passed!
+â /clear/courses/comp412/students/ILOC/blocks/lab2/block1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/unrelated_stores.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/TestTiebreaking.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/smith-4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/witt-2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/yanxinlu.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/witt-3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/smith-3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/smith-2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/prasad.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/simple.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/simple_alternating.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/trickystores.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/jwc.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/smith-1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2012/lab3/witt-1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s31_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s61_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s53_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s30_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s30_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s28_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s50_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s40_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s32_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s16_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s51_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s52_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s26_integersum.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s23_test_lshift2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s13_block2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s26_fibonacci.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s32_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s41_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s15_block2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s24_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s51_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s40_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s43_block1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s57_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s25_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s44_block3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s61_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s31_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s03_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s19_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s33_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s23_test_mult3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s40_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s53_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s27_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s33_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s61_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s32_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s43_block3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s23_test_sub5.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s55_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s30_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s24_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s18_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s13_block6.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s15_block1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s38_letters.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s17_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s55_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s12_testblock4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s09_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s56_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s26_sum.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s16_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s05_reverse.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s17_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s16_test0.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s09_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s14_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s08_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s16_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s18_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s63_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s33_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s05_factorial.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s57_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s23_test_add1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s12_testblock1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s29_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s52_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s11_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s45_block3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s43_block2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s21_largeRegTest.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s21_block1ZeroTest.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s40_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s32_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s38_squares.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s35_block3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s42_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s28_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s29_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s24_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s13_block5.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s11_test6.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s33_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s09_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s41_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s63_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s19_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s52_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s01_block1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s20_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s03_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s56_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s22_test_block3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s25_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s11_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s20_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s61_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s01_block3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s20_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s45_block2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s22_test_block4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s14_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s12_testblock2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s43_block4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s38_round.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s24_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s22_test_block1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s63_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s58_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s04_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s27_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s17_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s12_testblock3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s34_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s36_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s11_test7.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s34_test5.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s10_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s46_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s04_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s28_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s20_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s15_block3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s51_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s46_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s63_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s39_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s21_allOpsTest.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s48_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s58_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s03_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s34_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s19_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s56_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s18_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s22_test_block2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s04_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s44_block2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s08_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s31_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s35_block2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s08_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s15_block4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s34_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s44_block4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s48_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s39_test5.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s29_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s53_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s26_factorial.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s14_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s58_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s41_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s30_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s34_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s11_test5.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s45_block4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s08_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s13_block1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s36_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s23_test_rshift4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s06_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s05_copy.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s27_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s21_Factorial10Test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s11_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s29_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s13_block3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s14_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s48_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s05_sumarray.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s09_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s48_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s57_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s11_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s03_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s62_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s10_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s46_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s06_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s39_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s18_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s28_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s01_block4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s01_block0.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s47_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s55_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s58_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s35_block4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s52_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s19_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s25_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s06_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s36_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s56_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s10_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s55_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s17_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s27_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s47_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s01_block2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s13_block4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s25_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s45_block1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s38_large.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s31_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s04_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s35_block1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s53_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s44_block1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s36_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s47_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s06_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s51_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s57_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s47_test3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s10_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s46_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab2/s39_test4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s50_multipleStores.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s51_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s35_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s16_test1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s61_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s27_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s50_output_store.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s45_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s52_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s56_dependency.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s01_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s53_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s29_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s16_test2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s40_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s55_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s22_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s43_renamed.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s12_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s03_the_monster.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s31_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s11_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s07_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s20_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s04_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s17_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s05_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s39_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s49_SumMult.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s25_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s06_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s28_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s60_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s54_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s50_trickyRename.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s19_output_order.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s13_testpriorities.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s46_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s38_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s14_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s30_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s58_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s26_vectoradd_hard.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s26_vectoradd_easy.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s02_memory_disambiguation_1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s36_memoryconfusion.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s48_crowdedStore.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s47_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s10_dependency_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s23_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s44_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s15_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s33_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s02_memory_disambiguation_2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2013/lab3/s08_test.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/cal7.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/jjc6.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/yp10.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/wg7.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/wan1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/nbh2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/jfj2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/my12.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/yd9.squares.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/jmn8.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/ssh2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/yw27.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/xl22.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/jl71.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/bw6.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/ngr2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/pyw1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/hz21.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/yd9.gcd.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/wj3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/jl98.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/ews1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/hl33.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/imh1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/kcb5.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/wsp1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/les6.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/icm2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/yl65.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/sm80.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/msp5.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/kwa2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/sjl4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/jmg9.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/jjo1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/ash4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/fg10.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/jps12.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/jak6.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/cms14.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/jdw7.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/veb2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/mcc10.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/zw12.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/jdc5.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/gel1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/cz21.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/kz12.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/cx5.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/yn4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/dtp3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/yx14.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/kef2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/kag8.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/gty1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab2/eeb3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/cal7.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jjc6.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/yp10.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/wg7.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/wan1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/nbh2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/tbw1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jfj2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/my12.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/tc19.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/ssh2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jmn8.2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/xl22.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jl71.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/bw6.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/ngr2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/pyw1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/hz21.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/wj3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jl98.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/ews1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/hl33.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/imh1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/wsp1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/les6.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/icm2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/sm80.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/msp5.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/kwa2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/sjl4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jmg9.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jjo1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/fg10.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/xl43.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jps12.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jak6.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/cms14.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jdw7.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/veb2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/mcc10.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jdc5.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/gel1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/cz21.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/cx5.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/yn4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jmn8.3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/dtp3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jmn8.4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jmn8.1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/jfj2.avg.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/yx14.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/kag8.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/gty1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/eeb3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2014/lab3/yd9.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/yg31.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/pe4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/tl18.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/fdb1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/bx3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/zkk1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/yw27.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/ehs2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/oky1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/pq2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/mas20.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/yd18.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/cav2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/tve1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/gak2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/ac86.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/jj26.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/asn2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/mww4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/xw32.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/yz56.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/fgd1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/am98.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/zc12.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/ptd3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/dh15.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/wl22.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/jnd2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/kh25.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/med7.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/mmj4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/lh15.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/cl41.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/kws4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/dw20.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/clf6.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/meh9.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/jml13.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/bsl3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/pd22.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/pat2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/arb11.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/jbk2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/xal1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/yk26.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/wsb1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/hz30.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/wcr1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/ls53.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/yz75.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/njm3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/jfk2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/xc12.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/ish1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/kl33.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/skn2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab2/lss4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/yg31.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/pe4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/tl18.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/bx3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/zkk1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/yw27.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/ehs2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/oky1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/mas20.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/yd18.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/cav2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/tve1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/gak2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/ac86.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/jj26.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/asn2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/mww4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/xw32.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/yz56.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/fgd1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/am98.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/zc12.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/ptd3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/dh15.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/wl22.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/jnd2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/kh25.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/med7.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/lh15.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/kws4.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/clf6.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/meh9.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/jml13.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/bsl3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/pd22.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/pat2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/arb11.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/jbk2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/xal1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/wsb1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/hz30.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/wcr1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/yz75.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/njm3.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/xc12.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/ish1.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/kl33.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/skn2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/ktr2.i passed!
+â /clear/courses/comp412/students/ILOC/contributed/2015/lab3/lss4.i passed!
+----------------------------------------------------------------------
+
+ð You passed all 522 tests!
+
+
+Consider adding your own tests cases to the repository so the whole class can benefit!
+https://github.com/zawie/zill412
+
