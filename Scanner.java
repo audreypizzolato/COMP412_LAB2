@@ -143,6 +143,7 @@ public class Scanner{
             int curCat = 0;
             int scanLineNum=1;
             int len;
+            char c;
 
             long transitionTime = 0;
             long endStateTime =0;
@@ -158,9 +159,10 @@ public class Scanner{
                 
                 for(int i=0; i<len; i++){
                     
+                    c = line.charAt(i);
                     
                     // see if character can be mapped
-                    transitionChar = charToInt.getOrDefault(line.charAt(i),-1);
+                    transitionChar = charToInt.getOrDefault(c,-1);
                     if(transitionChar == -1){
                         //character does not exist in map
                         System.err.println("ERROR "+scanLineNum+":");
@@ -229,7 +231,7 @@ public class Scanner{
 
                             
                             if(transitionChar == 15){
-                                word = ""+line.charAt(i);
+                                word = ",";
                                 rollback = 36;
                                 currentState = 36;
                                 continue;
@@ -249,7 +251,7 @@ public class Scanner{
                         if(transitionStates[currentState][transitionChar]>=0){
                             currentState = transitionStates[currentState][transitionChar];
                             rollback = currentState;
-                            word+=line.charAt(i);
+                            word+=c;
                             if(currentState==43){
                                 break;
                             }
@@ -309,7 +311,7 @@ public class Scanner{
                             if(transitionStates[0][transitionChar]>=0){
                                 currentState = transitionStates[0][transitionChar];
                                 rollback = 0;
-                                word=""+line.charAt(i);
+                                word=""+c;
                             } 
                             else{
                                 System.err.println("ERROR "+scanLineNum+":");
