@@ -1,0 +1,75 @@
+Auto-grader Configuration:
+  blocks found in :	 auto_grade/blocks/
+  normal deadline is:	 2023-09-11
+ 
+=======================================================================
+Testing submission: aap13.tar
+Name: aap13, NetId: aap13
+	Date From Files: 2023-09-10
+
+--- building executable ---
+rm -f *.class
+javac Main.java
+javac Token.java
+javac Parser.java
+--- built front end and should be ready to run ---
+
+Testing Correctness
+
+	Holmes.i
+	0 correct lines identified as errors
+			9 errors found, 9 expected
+	T8k.i	
+	0 correct lines identified as errors
+			0 errors found, 0 expected
+	parse.i
+	0 correct lines identified as errors
+			5 errors found, 5 expected
+	report1.i
+	0 correct lines identified as errors
+			0 errors found, 0 expected
+	report2.i
+	0 correct lines identified as errors
+			0 errors found, 0 expected
+	report3.i
+	0 correct lines identified as errors
+			0 errors found, 0 expected
+	scanner.i
+	0 correct lines identified as errors
+			2 errors found, 2 expected
+	-------------------------
+	0 correct lines identified as errors
+	0 lines with errors missed
+
+Testing Conformance	(If we got this far, the tar file worked.)
+
+	Produced 'ERROR' message on missing or bad file name
+	Help message check found all options
+
+Quick Scalability Test:
+	(For a more accurate test, run the auto-timer)
+
+	T8k.i:  	1.712742 seconds
+	T16k.i:  	2.2340479999999996 seconds
+	T32k.i:  	1.78412 seconds
+	T64k.i:  	2.504454 seconds
+	T128k.i:  	2.2948310000000003 seconds
+
+	The code may not work; 2 codes showed minimal growth
+	This effect may also be timer variability.
+	Run the auto-timer to see more accurate results.
+
+	Scaling appears to be linear.
+
+Scoring (on the provided test blocks):
+
+	Correctness:	100.0%
+	Conformance:	100.0%
+
+	Run the auto-timer to see Scalability results
+
+finished testing submission aap13.tar
+=======================================================================
+
+Grading run complete.
+

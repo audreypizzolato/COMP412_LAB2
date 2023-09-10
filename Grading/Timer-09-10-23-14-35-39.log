@@ -1,0 +1,36 @@
+Autotimer: using Scalability SLOCs blocks
+=======================================================================
+Testing submission: aap13.tar
+NetId: aap13, Name: aap13
+	Date From Files: 2023-09-10
+
+--- building executable ---
+rm -f *.class
+javac Main.java
+javac Token.java
+javac Parser.java
+--- built front end and should be ready to run ---
+
+
+Testing Scalability:
+	(Each elapsed time is the minimum of five runs.)
+
+	T1k.i:  	1.2589 seconds
+	T2k.i:  	1.2832 seconds
+	T4k.i:  	1.5099 seconds
+	T8k.i:  	1.3767 seconds
+	T16k.i:  	1.7313 seconds
+	T32k.i:  	1.5782 seconds
+	T64k.i:  	1.9126 seconds
+	T128k.i:  	2.1093 seconds
+ 
+Scaling score is 0
+Efficiency score is 64.06799999999997	( java )
+
+	Anomalous behavior: 2 inputs showed no growth
+
+finished timing run on submission aap13.tar
+=======================================================================
+
+Timing run complete.
+

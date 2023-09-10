@@ -13,7 +13,7 @@
 // Triangular number sequence
 //
 // Example usage: ./sim < report2.i
-//
+/
 
         loadI   1 => r0
         loadI   2 => r1

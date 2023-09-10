@@ -74,7 +74,7 @@ public class Main{
                 System.out.println("Parse Time: " + endParse);
 
                 if(flag==2 && success){
-                    System.out.println("Parse Succeeded, finding " + "ILOC expressions");
+                    System.out.println("Parse Succeeded in finding " + "ILOC expressions");
                 }
             }
 

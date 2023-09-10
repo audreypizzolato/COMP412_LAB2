@@ -4,7 +4,7 @@ import java.io.*;
 public class Scanner{
     BufferedReader reader;
     private String line;
-    private int[][] transitionStates = new int[43][26];
+    private int[][] transitionStates = new int[44][26];
     List<String> lexeme = new ArrayList<>();
     List<Integer> category = new ArrayList<>();
     int index = 0;
@@ -63,7 +63,7 @@ public class Scanner{
         transitionStates[0][16]=34;
         transitionStates[34][17]=35;
         transitionStates[0][18]=39;
-        transitionStates[39][18]=39;
+        transitionStates[39][18]=43;
         transitionStates[0][20]=37;
         transitionStates[0][21]=37;
         transitionStates[0][22]=38;
@@ -83,6 +83,7 @@ public class Scanner{
         transitionStates[38][23]=1;
         transitionStates[39][23]=1;
         transitionStates[42][23]=1;
+        transitionStates[43][23]=1;
         transitionStates[11][24]=12;
         transitionStates[0][25]=40;
 
@@ -141,6 +142,11 @@ public class Scanner{
             String word = "";
             int curCat = 0;
             int scanLineNum=1;
+            int len;
+
+            long transitionTime = 0;
+            long endStateTime =0;
+
 
              while((line = reader.readLine())!=null){
                 word = "";
@@ -148,56 +154,66 @@ public class Scanner{
                 line+='\n';
 
                 //System.out.println(line);
-                for(char c : line.toCharArray()){
-                    //check to see if we need to rollback
-                    //System.out.println(c + " " + currentState);
+                len = line.length();
+                
+                for(int i=0; i<len; i++){
                     
-                    if(c == '\n' || c=='\t' || c==' ' || c==',' || (c=='/' && currentState != 0)){
+                    
+                    // see if character can be mapped
+                    transitionChar = charToInt.getOrDefault(line.charAt(i),-1);
+                    if(transitionChar == -1){
+                        //character does not exist in map
+                        System.err.println("ERROR "+scanLineNum+":");
+                        break;
+                    }
+                    
+                    if(transitionChar == 20 || transitionChar == 19 || transitionChar == 15){
                         long startParse = System.nanoTime();
                         
-                        if(rollback == 39){
-                            break;
-                        }
-                        if(rollback == 0){
+                        
+                        if(rollback == 0 ){
                             continue;
                         }
-                        
-                        
-                        if(transitionStates[rollback][23]==1){
-                            
+ 
                             //identify category
                             curCat = -1;
-                            if(rollback==5 || rollback ==11){
-                                curCat = 0;
+                            switch (rollback){
+                                case 5:
+                                case 11:
+                                    curCat =0;
+                                    break;
+                                case 12:
+                                    curCat = 1;
+                                    break;
+                                case 24:
+                                case 7:
+                                case 18:
+                                    curCat = 2;
+                                    break;
+                                case 33:
+                                    curCat = 3;
+                                    break;
+                                case 42:
+                                    curCat = 4;
+                                    break;
+                                case 38:
+                                    //check if register or digit when returned
+                                    if(word.charAt(0)=='r'){
+                                        curCat = 6;
+                                    }
+                                    else{
+                                        curCat = 5;
+                                    }
+                                    break;
+                                case 36:
+                                    curCat = 7;
+                                    break;
+                                case 35:
+                                    curCat = 8;
+                                    break;
+
                             }
-                            else if(rollback == 12 ){
-                                curCat = 1;
-                            }
-                            else if(rollback==24 || rollback ==7 || rollback==18 ){
-                                curCat = 2;
-                            }
-                            else if(rollback == 33 ){
-                                curCat = 3;
-                            }
-                            else if( rollback == 42 ){
-                                curCat = 4;
-                            }
-                            else if( rollback == 38 ){
-                                //check if register or digit when returned
-                                if(word.charAt(0)=='r'){
-                                    curCat = 6;
-                                }
-                                else{
-                                    curCat = 5;
-                                }
-                                
-                            }
-                            else if(rollback == 36){
-                                curCat = 7;
-                            }
-                            else if( rollback == 35 ){
-                                curCat = 8;
-                            }
+                            
                             
                             if(curCat==-1){
                                 System.err.println("ERROR "+scanLineNum+":");
@@ -212,82 +228,73 @@ public class Scanner{
                             }
 
                             
-                            if(c == ','){
-                                word = ""+c;
+                            if(transitionChar == 15){
+                                word = ""+line.charAt(i);
                                 rollback = 36;
                                 currentState = 36;
                                 continue;
                             }
-                            
-                            
-                            
-                            word = "";
-                            rollback = 0;
-                            currentState = 0;
-                            
-                            
-                        }
-                        else{
-                            //not an end state when there should be
-                            System.err.println("ERROR "+scanLineNum+":");
-                            break;
-                        }
+
+                        
+                        word = "";
+                        rollback = 0;
+                        currentState = 0;
                         long endParse = System.nanoTime() - startParse;
-                        System.out.println("Finding End State Parse Time: " + endParse);
+                        endStateTime+=endParse;
                     }
                     else{
                         long startParse = System.nanoTime();
-                        // see if character can be mapped
-                        if(charToInt.containsKey(c)){
-                            transitionChar = charToInt.get(c);
-                        }
-                        else{
-                            //character does not exist in map
-                            System.err.println("ERROR "+scanLineNum+":");
-                            break;
-                        }
+                        
                         // see if the transition exists
                         if(transitionStates[currentState][transitionChar]>=0){
                             currentState = transitionStates[currentState][transitionChar];
                             rollback = currentState;
-                            word+=c;
+                            word+=line.charAt(i);
+                            if(currentState==43){
+                                break;
+                            }
                         }
                         else if(transitionStates[rollback][23]==1){
                             
                             //identify category
                             curCat = -1;
-                            if(rollback==5 || rollback ==11){
-                                curCat = 0;
+                            switch (rollback){
+                                case 5:
+                                case 11:
+                                    curCat =0;
+                                    break;
+                                case 12:
+                                    curCat = 1;
+                                    break;
+                                case 24:
+                                case 7:
+                                case 18:
+                                    curCat = 2;
+                                    break;
+                                case 33:
+                                    curCat = 3;
+                                    break;
+                                case 42:
+                                    curCat = 4;
+                                    break;
+                                case 38:
+                                    //check if register or digit when returned
+                                    if(word.charAt(0)=='r'){
+                                        curCat = 6;
+                                    }
+                                    else{
+                                        curCat = 5;
+                                    }
+                                    break;
+                                case 36:
+                                    curCat = 7;
+                                    break;
+                                case 35:
+                                    curCat = 8;
+                                    break;
+
                             }
-                            else if(rollback == 12 ){
-                                curCat = 1;
-                            }
-                            else if(rollback==24 || rollback ==7 || rollback==18 ){
-                                curCat = 2;
-                            }
-                            else if(rollback == 33 ){
-                                curCat = 3;
-                            }
-                            else if( rollback == 42 ){
-                                curCat = 4;
-                            }
-                            else if( rollback == 38 ){
-                                //check if register or digit when returned
-                                if(word.charAt(0)=='r'){
-                                    curCat = 6;
-                                }
-                                else{
-                                    curCat = 5;
-                                }
-                                
-                            }
-                            else if(rollback == 36){
-                                curCat = 7;
-                            }
-                            else if( rollback == 35 ){
-                                curCat = 8;
-                            }
-                            
+
                             if(curCat==-1){
                                 System.err.println("ERROR "+scanLineNum+":");
                                 break;
@@ -302,27 +309,22 @@ public class Scanner{
                             if(transitionStates[0][transitionChar]>=0){
                                 currentState = transitionStates[0][transitionChar];
                                 rollback = 0;
-                                word=""+c;
-                            }
+                                word=""+line.charAt(i);
+                            } 
                             else{
-  
                                 System.err.println("ERROR "+scanLineNum+":");
                                 
                             }
-
-                            
-                            
                             
                         }
                         else{
                             //character does not transistion into 
                             //check if end state
-                            
                             System.err.println("ERROR "+scanLineNum+":");
                             
                         }
-                        long endParse = System.nanoTime() - startParse;
-                        System.out.println("Transition Parse Time: " + endParse);
+                        //long endParse = System.nanoTime() - startParse;
+                        //transitionTime += endParse;
                     }
                     
                     
@@ -343,7 +345,8 @@ public class Scanner{
             if(flag == 3){
                 System.out.println(scanLineNum + ": <9" + ", \"" + "\" >");
             }
-            
+            //System.out.println("Trasition Parse Time: " + transitionTime);
+            //System.out.println("End State Parse Time: " + endStateTime);
         } catch (Exception ex) {
         }
        
@@ -357,70 +360,75 @@ public class Scanner{
         
 
         while(curCategory!=9){
-            if(curCategory==0){
-                finishLine = finishMemop();
-                if(finishLine == -1){
-                    curCategory = category.get(index);
-                    while(curCategory!=10){
-                        index++;
+            switch (curCategory){
+                case 0:
+                    finishLine = finishMemop();
+                    if(finishLine == -1){
                         curCategory = category.get(index);
+                        while(curCategory!=10){
+                            index++;
+                            curCategory = category.get(index);
+                        }
                     }
-                }
-                lineNum++; 
-            }
-            else if(curCategory==1){
-                finishLine = finishLoadI();
-                if(finishLine == -1){
-                    curCategory = category.get(index);
-                    while(curCategory!=10){
-                        index++;
+                    lineNum++; 
+                    break;
+                
+                case 1:
+                    finishLine = finishLoadI();
+                    if(finishLine == -1){
                         curCategory = category.get(index);
+                        while(curCategory!=10){
+                            index++;
+                            curCategory = category.get(index);
+                        }
                     }
-                }
-                lineNum++;
-            }
-            else if(curCategory==2){
-                finishLine = finishArthop();
-                if(finishLine == -1){
-                    curCategory = category.get(index);
-                    while(curCategory!=10){
-                        index++;
+                    lineNum++;
+                    break;
+                case 2:
+                    finishLine = finishArthop();
+                    if(finishLine == -1){
                         curCategory = category.get(index);
+                        while(curCategory!=10){
+                            index++;
+                            curCategory = category.get(index);
+                        }
                     }
-                }
-                lineNum++;
-            }
-            else if(curCategory==3){
-                finishLine = finishOutput();
-                if(finishLine == -1){
-                    curCategory = category.get(index);
-                    while(curCategory!=10){
-                        index++;
+                    lineNum++;
+                    break;
+                case 3:
+                    finishLine = finishOutput();
+                    if(finishLine == -1){
                         curCategory = category.get(index);
+                        while(curCategory!=10){
+                            index++;
+                            curCategory = category.get(index);
+                        }
                     }
-                }
-                lineNum++;
-            }
-            else if(curCategory==4){
-                finishLine = finishNop();
-                if(finishLine == -1){
-                    curCategory = category.get(index);
-                    while(curCategory!=10){
-                        index++;
+                    lineNum++;
+                    break;
+                case 4:
+                    finishLine = finishNop();
+                    if(finishLine == -1){
                         curCategory = category.get(index);
+                        while(curCategory!=10){
+                            index++;
+                            curCategory = category.get(index);
+                        }
                     }
-                }
-                lineNum++;
+                    lineNum++;
+                    break;
+                case 10:
+                    lineNum++;
+                    break;
+                
+                default:
+                    if(flag == 1 || flag ==2){
+                        System.err.println("ERROR "+lineNum+":");
+                    }
+                    lineNum++;
+                 
             }
-            else if(curCategory==10){
-                lineNum++;
-            }
-            else{
-                if(flag == 1 || flag ==2){
-                    System.err.println("ERROR "+lineNum+":");
-                }
-                lineNum++;
-            }
+            
             index++;
             curCategory = category.get(index);
             
