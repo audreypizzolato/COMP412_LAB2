@@ -13,7 +13,7 @@ public class Scanner{
     int curCategory;
     //flags h=0, r=1, p=2, s=3
     int flag;
-    int lineNum =0;
+    int lineNum =1;
     Map<Character, Integer> charToInt = new HashMap<Character, Integer>();
 
     public Scanner(int flag){
@@ -154,8 +154,11 @@ public class Scanner{
                     
                     if(c == '\n' || c=='\t' || c==' ' || c==',' || (c=='/' && currentState != 0)){
                         
-                        if(rollback == 39 || rollback==0){
+                        if(rollback == 39){
                             break;
+                        }
+                        if(rollback == 0){
+                            continue;
                         }
                         
                         
@@ -218,7 +221,7 @@ public class Scanner{
                             
                             
                             word = "";
-                            rollback = currentState;
+                            rollback = 0;
                             currentState = 0;
                             
                             
@@ -245,8 +248,72 @@ public class Scanner{
                             rollback = currentState;
                             word+=c;
                         }
+                        else if(transitionStates[rollback][23]==1){
+                            
+                            //identify category
+                            curCat = -1;
+                            if(rollback==5 || rollback ==11){
+                                curCat = 0;
+                            }
+                            else if(rollback == 12 ){
+                                curCat = 1;
+                            }
+                            else if(rollback==24 || rollback ==7 || rollback==18 ){
+                                curCat = 2;
+                            }
+                            else if(rollback == 33 ){
+                                curCat = 3;
+                            }
+                            else if( rollback == 42 ){
+                                curCat = 4;
+                            }
+                            else if( rollback == 38 ){
+                                //check if register or digit when returned
+                                if(word.charAt(0)=='r'){
+                                    curCat = 6;
+                                }
+                                else{
+                                    curCat = 5;
+                                }
+                                
+                            }
+                            else if(rollback == 36){
+                                curCat = 7;
+                            }
+                            else if( rollback == 35 ){
+                                curCat = 8;
+                            }
+                            
+                            if(curCat==-1){
+                                System.err.println("ERROR "+scanLineNum+":");
+                                break;
+                            }
+                            else{
+                                lexeme.add(word);
+                                category.add(curCat);
+                                if(flag == 3){
+                                    System.out.println(scanLineNum + ": <" + curCat+", \"" + word + "\" >");
+                                }
+                            }
+                            if(transitionStates[0][transitionChar]>=0){
+                                currentState = transitionStates[0][transitionChar];
+                                rollback = 0;
+                                word=""+c;
+                            }
+                            else{
+  
+                                System.err.println("ERROR "+scanLineNum+":");
+                                
+                            }
+
+                            
+                            
+                            
+                        }
                         else{
                             //character does not transistion into 
+                            //check if end state
+                            
                             System.err.println("ERROR "+scanLineNum+":");
                             
                         }
@@ -274,9 +341,6 @@ public class Scanner{
     }
     
     public boolean parser(){
-        
-        
-        
         index = 0;
         int curCategory = category.get(index);
         createIR = true;
@@ -284,68 +348,69 @@ public class Scanner{
         
 
         while(curCategory!=9){
-            switch(curCategory){
-                case 0:
-                    finishLine = finishMemop();
-                    if(finishLine == -1){
-                        while(curCategory!=10){
-                            index++;
-                            curCategory = category.get(index);
-                        }
+            if(curCategory==0){
+                finishLine = finishMemop();
+                if(finishLine == -1){
+                    curCategory = category.get(index);
+                    while(curCategory!=10){
+                        index++;
+                        curCategory = category.get(index);
                     }
-                    break;
-                case 1:
-                    finishLine = finishLoadI();
-                    if(finishLine == -1){
-                        while(curCategory!=10){
-                            index++;
-                            curCategory = category.get(index);
-                        }
+                }
+                lineNum++; 
+            }
+            else if(curCategory==1){
+                finishLine = finishLoadI();
+                if(finishLine == -1){
+                    curCategory = category.get(index);
+                    while(curCategory!=10){
+                        index++;
+                        curCategory = category.get(index);
                     }
-                    lineNum++;
-                    break;
-                    
-                case 2:
-                    finishLine = finishArthop();
-                    if(finishLine == -1){
-                        while(curCategory!=10){
-                            index++;
-                            curCategory = category.get(index);
-                        }
+                }
+                lineNum++;
+            }
+            else if(curCategory==2){
+                finishLine = finishArthop();
+                if(finishLine == -1){
+                    curCategory = category.get(index);
+                    while(curCategory!=10){
+                        index++;
+                        curCategory = category.get(index);
                     }
-                    lineNum++;
-                    break;
-                case 3:
-                    finishLine = finishOutput();
-                    if(finishLine == -1){
-                        while(curCategory!=10){
-                            index++;
-                            curCategory = category.get(index);
-                        }
+                }
+                lineNum++;
+            }
+            else if(curCategory==3){
+                finishLine = finishOutput();
+                if(finishLine == -1){
+                    curCategory = category.get(index);
+                    while(curCategory!=10){
+                        index++;
+                        curCategory = category.get(index);
                     }
-                    lineNum++;
-                    break;
-                case 4:
-                    finishLine = finishNop();
-                    if(finishLine == -1){
-                        while(curCategory!=10){
-                            index++;
-                            curCategory = category.get(index);
-                        }
+                }
+                lineNum++;
+            }
+            else if(curCategory==4){
+                finishLine = finishNop();
+                if(finishLine == -1){
+                    curCategory = category.get(index);
+                    while(curCategory!=10){
+                        index++;
+                        curCategory = category.get(index);
                     }
-                    lineNum++;
-                    break;
-                case 10:
-                    lineNum++;
-                    break;
-                default:
-                    if(flag == 1 || flag ==2){
-                        System.err.println("ERROR "+lineNum+":");
-                    }
-                    lineNum++;
-                    break;
-
-
+                }
+                lineNum++;
+            }
+            else if(curCategory==10){
+                lineNum++;
+            }
+            else{
+                if(flag == 1 || flag ==2){
+                    System.err.println("ERROR "+lineNum+":");
+                }
+                lineNum++;
             }
             index++;
             curCategory = category.get(index);
