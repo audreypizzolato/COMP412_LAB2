@@ -1,0 +1,2 @@
+NetId	Name	T1k	T2k	T4k	T8k	T16k	T32k	T64k	T128k	Lang.	Scaling Pts	Eff Pts %
+aap13	aap13	0.7631	1.0772	1.0902	0.8436	0.8618	0.9099	1.3729	1.2063	java 	 unusual (?)	0	100	*

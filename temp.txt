@@ -1,0 +1,11 @@
+load r1 => r2
+store r1 => r2
+// good
+loadI 17 => r4
+add r1, r2 => r3 //Weird
+sub r3, r2 => r5 //Weird
+nop
+mult r5, r2 => r6 //Weird
+lshift r6, r4 => r7 //Weird
+rshift r7, r5 => r8 //Weird
+output 8
