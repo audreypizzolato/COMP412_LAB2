@@ -15,6 +15,14 @@ public class Scanner{
     int flag;
     int lineNum =1;
     Map<Character, Integer> charToInt = new HashMap<Character, Integer>();
+    IR head=null;
+    IR currentIR;
+    IR newIR;
+    IR tail;
+    int correctLinesIR=0;
+    int maxSR=0;
+    int[] SRToVR;
+    int[] LU;
 
     public Scanner(int flag){
         this.flag = flag;
@@ -131,7 +139,7 @@ public class Scanner{
         try {
             reader = new BufferedReader(new FileReader(f));
         } catch (Exception ex) {
-            System.err.println("ERROR :");
+            System.err.println("ERROR : could not read file into BufferedReader");
         }
     }
     public void scanFile(){
@@ -165,7 +173,8 @@ public class Scanner{
                     transitionChar = charToInt.getOrDefault(c,-1);
                     if(transitionChar == -1){
                         //character does not exist in map
-                        System.err.println("ERROR "+scanLineNum+":");
+                        System.err.println("ERROR "+scanLineNum+": character is not defined in ILOC");
+                        createIR=false;
                         break;
                     }
                     
@@ -218,7 +227,8 @@ public class Scanner{
                             
                             
                             if(curCat==-1){
-                                System.err.println("ERROR "+scanLineNum+":");
+                                System.err.println("ERROR "+scanLineNum+": word is not defined in ILOC");
+                                createIR = false;
                                 break;
                             }
                             else{
@@ -298,7 +308,8 @@ public class Scanner{
                             }
 
                             if(curCat==-1){
-                                System.err.println("ERROR "+scanLineNum+":");
+                                System.err.println("ERROR "+scanLineNum+": word is not defined in ILOC");
+                                createIR = false;
                                 break;
                             }
                             else{
@@ -314,7 +325,8 @@ public class Scanner{
                                 word=""+c;
                             } 
                             else{
-                                System.err.println("ERROR "+scanLineNum+":");
+                                System.err.println("ERROR "+scanLineNum+": word is not defined in ILOC");
+                                createIR = false;
                                 
                             }
                             
@@ -323,6 +335,7 @@ public class Scanner{
                             //character does not transistion into 
                             //check if end state
                             System.err.println("ERROR "+scanLineNum+":");
+                            createIR = false;
                             
                         }
                         //long endParse = System.nanoTime() - startParse;
@@ -357,13 +370,13 @@ public class Scanner{
     public boolean parser(){
         index = 0;
         int curCategory = category.get(index);
-        createIR = true;
         int finishLine;
         
 
         while(curCategory!=9){
             switch (curCategory){
                 case 0:
+                    lexeme.get(index).toString();
                     finishLine = finishMemop();
                     if(finishLine == -1){
                         curCategory = category.get(index);
@@ -371,6 +384,10 @@ public class Scanner{
                             index++;
                             curCategory = category.get(index);
                         }
+                    }
+                    else{
+                        correctLinesIR++;
+                        addIR(lineNum, lexeme.get(index-4), Integer.parseInt(lexeme.get(index-3).substring(1)),-1, Integer.parseInt(lexeme.get(index-1).substring(1)));
                     }
                     lineNum++; 
                     break;
@@ -384,6 +401,10 @@ public class Scanner{
                             curCategory = category.get(index);
                         }
                     }
+                    else{
+                        correctLinesIR++;
+                        addIR(lineNum, lexeme.get(index-4), Integer.parseInt(lexeme.get(index-3)),-1, Integer.parseInt(lexeme.get(index-1).substring(1)));
+                    }
                     lineNum++;
                     break;
                 case 2:
@@ -394,6 +415,10 @@ public class Scanner{
                             index++;
                             curCategory = category.get(index);
                         }
+                    }
+                    else{
+                        correctLinesIR++;
+                        addIR(lineNum, lexeme.get(index-6), Integer.parseInt(lexeme.get(index-5).substring(1)), Integer.parseInt(lexeme.get(index-3).substring(1)), Integer.parseInt(lexeme.get(index-1).substring(1)));
                     }
                     lineNum++;
                     break;
@@ -406,6 +431,10 @@ public class Scanner{
                             curCategory = category.get(index);
                         }
                     }
+                    else{
+                        correctLinesIR++;
+                        addIR(lineNum, lexeme.get(index-2), Integer.parseInt(lexeme.get(index-1)),-1, -1);
+                    }
                     lineNum++;
                     break;
                 case 4:
@@ -417,6 +446,10 @@ public class Scanner{
                             curCategory = category.get(index);
                         }
                     }
+                    else{
+                        correctLinesIR++;
+                        addIR(lineNum, lexeme.get(index-1), -1,-1, -1);
+                    }
                     lineNum++;
                     break;
                 case 10:
@@ -424,9 +457,9 @@ public class Scanner{
                     break;
                 
                 default:
-                    if(flag == 1 || flag ==2){
-                        System.err.println("ERROR "+lineNum+":");
-                    }
+                    
+                    System.err.println("ERROR "+lineNum+": line could not be parsed");
+                    createIR = false;
                     lineNum++;
                  
             }
@@ -444,9 +477,7 @@ public class Scanner{
         //REGISTER
         if(curCategory != 6){
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": Missing target register");
             return -1;
         }
         
@@ -455,9 +486,7 @@ public class Scanner{
         //INTO
         if(curCategory != 8){
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": Missing into character");
             return -1;
         }
             
@@ -466,9 +495,7 @@ public class Scanner{
         //REGISTER
         if(curCategory != 6){
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": Missing target register");
             return -1;
         }
 
@@ -481,9 +508,7 @@ public class Scanner{
         }
         else{
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": Missing end of line");
             return -1;
         }
              
@@ -494,9 +519,7 @@ public class Scanner{
         //CONSTANT
         if(curCategory != 5){
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": Missing constant");
             return -1;
         }
         
@@ -505,9 +528,7 @@ public class Scanner{
         //INTO
         if(curCategory != 8){
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": Missing into character");
             return -1;
         }
             
@@ -516,9 +537,7 @@ public class Scanner{
         //REGISTER
         if(curCategory != 6){
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": Missing target register");
             return -1;
         }
 
@@ -531,9 +550,7 @@ public class Scanner{
         }
         else{
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": Missing end of line character");
             return -1;
         }
              
@@ -545,9 +562,7 @@ public class Scanner{
         //REGISTER
         if(curCategory != 6){
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": Missing target register");
             return -1;
         }
         
@@ -556,9 +571,7 @@ public class Scanner{
         //COMMA
         if(curCategory != 7){
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": Missing comma");
             return -1;
         }
             
@@ -567,9 +580,7 @@ public class Scanner{
         //REGISTER
         if(curCategory != 6){
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": Missing target register");
             return -1;
         }
 
@@ -578,9 +589,7 @@ public class Scanner{
         //INTO
         if(curCategory != 8){
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": Missing into character");
             return -1;
         }
 
@@ -589,9 +598,8 @@ public class Scanner{
         //REGISTER
         if(curCategory != 6){
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": Missing register");
+
             return -1;
         }
 
@@ -604,9 +612,7 @@ public class Scanner{
         }
         else{
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": Missing end of line character");
             return -1;
         }
              
@@ -617,9 +623,7 @@ public class Scanner{
         //CONSTANT
         if(curCategory != 5){
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": missing constant");
             return -1;
         }
         
@@ -632,9 +636,8 @@ public class Scanner{
         }
         else{
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": missing end of line character");
+          
             return -1;
         }
              
@@ -650,14 +653,78 @@ public class Scanner{
         }
         else{
             createIR = false;
-            if(flag == 1 || flag ==2){
-                System.err.println("ERROR "+lineNum+":");
-            }
+            System.err.println("ERROR "+lineNum+": missing end of line character");
+            
             return -1;
         }
              
     }
-    
+    public void addIR(int line, String opcode, int reg1, int reg2, int reg3 ){
+        newIR = new IR(line,opcode,reg1,-1,-1,-1,reg2,-1,-1,-1,reg3,-1,-1,-1);
+        maxSR = Math.max(Math.max(Math.max(reg2, reg3),reg1),maxSR);
+        if(head == null){
+            head = newIR;
+            currentIR = newIR;
+            currentIR.setPrev(head);
+            tail = currentIR;
+        }
+        else{
+            currentIR.setNext(newIR);
+            newIR.setPrev(currentIR);
+            currentIR = newIR;
+            tail = currentIR;
+        }
+
+    }
+    public void renaming(){
+        SRToVR = new int[maxSR];
+        LU = new int[maxSR];
+        for(int i=0; i<maxSR; i++){
+            SRToVR[i] = -1;
+            LU[i] = -1;
+        }
+        int vrName =0;
+        int index = correctLinesIR;
+        currentIR = tail;
+        while(currentIR != null){
+            if(currentIR.op3SR!=-1){
+                if(SRToVR[currentIR.op3SR]==-1){
+                    SRToVR[currentIR.op3SR] = vrName++;
+                }
+                currentIR.op3VR = SRToVR[currentIR.op3SR];
+                currentIR.op3NU = LU[currentIR.op3SR];
+                SRToVR[currentIR.op3SR] = -1;
+                LU[currentIR.op3SR] = -1;
+            }
+            if(currentIR.op1SR!=-1){
+                if(SRToVR[currentIR.op1SR]==-1){
+                    SRToVR[currentIR.op1SR] = vrName++;
+                }
+                currentIR.op1VR = SRToVR[currentIR.op1SR];
+                currentIR.op1NU = LU[currentIR.op1SR];
+                SRToVR[currentIR.op1SR] = -1;
+                LU[currentIR.op1SR] = -1;
+            }
+            if(currentIR.op2SR!=-1){
+                if(SRToVR[currentIR.op2SR]==-1){
+                    SRToVR[currentIR.op2SR] = vrName++;
+                }
+                currentIR.op2VR = SRToVR[currentIR.op2SR];
+                currentIR.op2NU = LU[currentIR.op2SR];
+                
+            }
+            if(currentIR.op1SR!=-1){
+                LU[currentIR.op1SR] = index;
+            }
+            if(currentIR.op2SR!=-1){
+                LU[currentIR.op2SR] = index;
+            }
+            if(currentIR.op3SR!=-1){
+                LU[currentIR.op3SR] = index;
+            }
+            currentIR = currentIR.getPrev();
+        }
+    }
     
     
 }
