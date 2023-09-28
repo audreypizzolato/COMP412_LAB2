@@ -3,7 +3,6 @@ import java.io.File;
 public class Main{
     public static void main(String[] args){
         long startProgram = System.nanoTime();
-        System.out.println("Running");
         boolean hFlag = false;
         boolean xFlag = false;
         boolean kFlag = false;
@@ -55,29 +54,43 @@ public class Main{
             //System.out.println("scanning");
 
             scan.scanFile();
-            scan.parser();
-            scan.renaming();
-            IR currentIR = scan.head;
-            String output;
-            while(currentIR != null){
-                output="";
-                output+=currentIR.opcode;
-                if(currentIR.op1SR!=-1){
-                    output+=" r"+Integer.toString(currentIR.op1VR);
+            success = scan.parser();
+            if(success){
+                scan.renaming();
+                IR currentIR = scan.head;
+                String output;
+                while(currentIR != null){
+                    output="";
+                    output+=currentIR.opcode;
+                    if(currentIR.opcode.equals("output")){
+                        output+=" "+Integer.toString(currentIR.op1SR);
+                    }
+                    else if(currentIR.opcode.equals("nop")){
+                        
+                    }
+                    else{
+                        if(currentIR.opcode.equals("loadI") && currentIR.op1SR!=-1){
+                            output+=" "+Integer.toString(currentIR.op1SR);
+                        }
+                        else if(currentIR.op1SR!=-1){
+                            output+=" r"+Integer.toString(currentIR.op1VR);
+                        }
+                        if(currentIR.op2SR!=-1){
+                            output+=", r"+Integer.toString(currentIR.op2VR);
+                        }
+                        output+=" =>";
+                        if(currentIR.op3SR!=-1){
+                            output+=" r"+Integer.toString(currentIR.op3VR);
+                        }
+                        
+                    }
+                    System.out.println(output);
+                    currentIR = currentIR.next;
+                    
                 }
-                if(currentIR.op2SR!=-1){
-                    output+=", r"+Integer.toString(currentIR.op2VR);
-                }
-                output+="=>";
-                if(currentIR.op3SR!=-1){
-                    output+=" r"+Integer.toString(currentIR.op3VR);
-                }
-                System.out.println(output);
-
             }
-            
 
-            
+
         }
 
         

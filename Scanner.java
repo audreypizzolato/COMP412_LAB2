@@ -664,8 +664,8 @@ public class Scanner{
         maxSR = Math.max(Math.max(Math.max(reg2, reg3),reg1),maxSR);
         if(head == null){
             head = newIR;
+            head.prev = null;
             currentIR = newIR;
-            currentIR.setPrev(head);
             tail = currentIR;
         }
         else{
@@ -677,9 +677,9 @@ public class Scanner{
 
     }
     public void renaming(){
-        SRToVR = new int[maxSR];
-        LU = new int[maxSR];
-        for(int i=0; i<maxSR; i++){
+        SRToVR = new int[maxSR+1];
+        LU = new int[maxSR+1];
+        for(int i=0; i<=maxSR; i++){
             SRToVR[i] = -1;
             LU[i] = -1;
         }
@@ -687,42 +687,57 @@ public class Scanner{
         int index = correctLinesIR;
         currentIR = tail;
         while(currentIR != null){
-            if(currentIR.op3SR!=-1){
-                if(SRToVR[currentIR.op3SR]==-1){
-                    SRToVR[currentIR.op3SR] = vrName++;
+            if(!currentIR.opcode.equals("output")){
+                if(currentIR.opcode.equals("store")&&currentIR.op1SR!=-1){
+                    if(SRToVR[currentIR.op1SR]==-1){
+                        SRToVR[currentIR.op1SR] = vrName++;
+                    }
+                    currentIR.op1VR = SRToVR[currentIR.op1SR];
+                    currentIR.op1NU = LU[currentIR.op1SR];
+                    
                 }
-                currentIR.op3VR = SRToVR[currentIR.op3SR];
-                currentIR.op3NU = LU[currentIR.op3SR];
-                SRToVR[currentIR.op3SR] = -1;
-                LU[currentIR.op3SR] = -1;
-            }
-            if(currentIR.op1SR!=-1){
-                if(SRToVR[currentIR.op1SR]==-1){
-                    SRToVR[currentIR.op1SR] = vrName++;
+                if(currentIR.op3SR!=-1){
+                    if(SRToVR[currentIR.op3SR]==-1){
+                        SRToVR[currentIR.op3SR] = vrName++;
+                    }
+                    currentIR.op3VR = SRToVR[currentIR.op3SR];
+                    currentIR.op3NU = LU[currentIR.op3SR];
+                    if(!currentIR.opcode.equals("store")){
+                        SRToVR[currentIR.op3SR] = -1;
+                        LU[currentIR.op3SR] = -1;
+                    }
+                    
                 }
-                currentIR.op1VR = SRToVR[currentIR.op1SR];
-                currentIR.op1NU = LU[currentIR.op1SR];
-                SRToVR[currentIR.op1SR] = -1;
-                LU[currentIR.op1SR] = -1;
-            }
-            if(currentIR.op2SR!=-1){
-                if(SRToVR[currentIR.op2SR]==-1){
-                    SRToVR[currentIR.op2SR] = vrName++;
+                
+                if(currentIR.op1SR!=-1 && !currentIR.opcode.equals("loadI")&&!currentIR.opcode.equals("store")){
+                    if(SRToVR[currentIR.op1SR]==-1){
+                        SRToVR[currentIR.op1SR] = vrName++;
+                    }
+                    currentIR.op1VR = SRToVR[currentIR.op1SR];
+                    currentIR.op1NU = LU[currentIR.op1SR];
+                    
                 }
-                currentIR.op2VR = SRToVR[currentIR.op2SR];
-                currentIR.op2NU = LU[currentIR.op2SR];
+                if(currentIR.op2SR!=-1){
+                    if(SRToVR[currentIR.op2SR]==-1){
+                        SRToVR[currentIR.op2SR] = vrName++;
+                    }
+                    currentIR.op2VR = SRToVR[currentIR.op2SR];
+                    currentIR.op2NU = LU[currentIR.op2SR];
+                    
+                }
+                if(currentIR.op1SR!=-1){
+                    LU[currentIR.op1SR] = index;
+                }
+                if(currentIR.op2SR!=-1){
+                    LU[currentIR.op2SR] = index;
+                }
+                if(currentIR.op3SR!=-1){
+                    LU[currentIR.op3SR] = index;
+                }
                 
             }
-            if(currentIR.op1SR!=-1){
-                LU[currentIR.op1SR] = index;
-            }
-            if(currentIR.op2SR!=-1){
-                LU[currentIR.op2SR] = index;
-            }
-            if(currentIR.op3SR!=-1){
-                LU[currentIR.op3SR] = index;
-            }
-            currentIR = currentIR.getPrev();
+            currentIR = currentIR.prev;
+            
         }
     }
     
