@@ -21,8 +21,18 @@ public class Scanner{
     IR tail;
     int correctLinesIR=0;
     int maxSR=0;
+    int maxVR=0;
+    int maxPR=0;
     int[] SRToVR;
     int[] LU;
+    //allocating
+    Stack<Integer> stackPR = new Stack<Integer>();
+    int x;
+    int[] VRToPR;
+    int[] PRToVR;
+    int[] PRNU;
+    int[] markPR;
+    int pr;
 
     public Scanner(int flag){
         this.flag = flag;
@@ -662,6 +672,7 @@ public class Scanner{
     public void addIR(int line, String opcode, int reg1, int reg2, int reg3 ){
         newIR = new IR(line,opcode,reg1,-1,-1,-1,reg2,-1,-1,-1,reg3,-1,-1,-1);
         maxSR = Math.max(Math.max(Math.max(reg2, reg3),reg1),maxSR);
+    
         if(head == null){
             head = newIR;
             head.prev = null;
@@ -736,9 +747,119 @@ public class Scanner{
                 }
                 
             }
+            maxVR = Math.max(Math.max(Math.max(currentIR.op1VR, currentIR.op2VR),currentIR.op3VR),maxVR);
             currentIR = currentIR.prev;
             
         }
+    }
+    public int getAPR(int vr, int nu){
+        if(!stackPR.isEmpty()){
+            x = stackPR.pop();
+        }
+        else{
+            spill(x);
+        }
+        VRToPR[vr] = x;
+        PRToVR[x] = vr;
+        PRNU[x] = nu;
+        return x;
+
+    }
+    public void freeAPR(int pr){
+        // invalid
+        VRToPR[PRToVR[pr]] = -1;
+        PRToVR[pr] = -1;
+        PRNU[pr] = -1;
+        stackPR.push(pr);
+
+    }
+    public void alloc(){
+        VRToPR = new int[maxVR];
+        PRToVR = new int[maxPR];
+        markPR = new int[maxPR];
+        for(int vr=0; vr<maxVR;vr++){
+            VRToPR[vr] = -1;
+        }
+        for(int pr=0; pr<maxPR; pr++){
+            PRToVR[pr] = -1;
+            PRNU[pr] = -1;
+            stackPR.push(pr);
+            markPR[pr] = -1;
+        }
+        currentIR = head;
+        while(currentIR != null){
+            //clear the mark
+            markPR[currentIR.op1PR] = -1;
+            markPR[currentIR.op2PR] = -1;
+            markPR[currentIR.op3PR] = -1;
+            //allocate uses
+            if(!currentIR.opcode.equals("output") || !currentIR.opcode.equals("loadI")){
+                if(currentIR.op1PR!=-1){
+                    pr = VRToPR[currentIR.op1VR];
+                    if(pr == -1){
+                        currentIR.op1PR = getAPR(currentIR.op1VR, currentIR.op1NU);
+                        restore(currentIR.op1VR,currentIR.op1PR);
+                    }
+                    else{
+                        currentIR.op1PR = pr;
+                    }
+                    markPR[currentIR.op1PR] = currentIR.op1PR;
+                }
+                if(currentIR.op2PR!=-1){
+                    pr = VRToPR[currentIR.op2VR];
+                    if(pr == -1){
+                        currentIR.op2PR = getAPR(currentIR.op2VR, currentIR.op2NU);
+                        restore(currentIR.op2VR,currentIR.op2PR);
+                    }
+                    else{
+                        currentIR.op2PR = pr;
+                    }
+                    markPR[currentIR.op2PR] = currentIR.op2PR;
+                }
+            }
+            if(currentIR.opcode.equals("store")){
+                if(currentIR.op3PR!=-1){
+                    pr = VRToPR[currentIR.op3VR];
+                    if(pr == -1){
+                        currentIR.op3PR = getAPR(currentIR.op3VR, currentIR.op3NU);
+                        restore(currentIR.op3VR,currentIR.op3PR);
+                    }
+                    else{
+                        currentIR.op3PR = pr;
+                    }
+                    markPR[currentIR.op3PR] = currentIR.op3PR;
+                }
+            }
+            //last use
+            if(!currentIR.opcode.equals("output") || !currentIR.opcode.equals("loadI")){
+                if(currentIR.op1NU == -1 && currentIR.op1PR!=-1){
+                    freeAPR(currentIR.op1PR);
+                }
+                if(currentIR.op2NU == -1 && currentIR.op2PR!=-1){
+                    freeAPR(currentIR.op2PR);
+                }
+            }
+            if(currentIR.opcode.equals("store")){
+                if(currentIR.op3NU == -1 && currentIR.op3PR!=-1){
+                    freeAPR(currentIR.op3PR);
+                }
+            }
+            //clear the mark
+            markPR[currentIR.op1PR] = -1;
+            markPR[currentIR.op2PR] = -1;
+            markPR[currentIR.op3PR] = -1;
+            //allocate def
+            if(!currentIR.opcode.equals("store")){
+                currentIR.op3PR = getAPR(currentIR.op3VR, currentIR.op3NU);
+                markPR[currentIR.op3PR] = currentIR.op3PR;
+            }
+            currentIR = currentIR.getNext();
+        }
+            
+
+    }
+    public void spill(int x){
+
     }
     
     
