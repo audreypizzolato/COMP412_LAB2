@@ -2,11 +2,10 @@ import java.io.File;
 
 public class Main{
     public static void main(String[] args){
-        long startProgram = System.nanoTime();
         boolean hFlag = false;
         boolean xFlag = false;
-        boolean kFlag = false;
         int totalFlag = 0;
+        int k=0;
         boolean success;
 
         if(args.length == 0){
@@ -20,14 +19,12 @@ public class Main{
             else if(args[i].equals("-x")){
                 xFlag = true;
             }
-            else if(args[i].equals("-k")){
-                kFlag = true;
-            }
 
         }
-        //flags h=0, x=1, k=2, 
+        //flags h=0, x=1 
         int flag=-1;
         int file=args.length-1;
+        k = Integer.parseInt(args[0]);
         
         if(totalFlag == 0){
             //-p flag
@@ -35,13 +32,13 @@ public class Main{
         }
         
         if(hFlag == true){
-            System.err.println("COMP 412, Fall 2023 Lab 2 \nCommand Syntax:\n\t./412fe [flags] filename\n\nRequired arguments:\n\tfilename is the pathname (absolute or relative) to the input file\n\nOptional flags:\n\t-h       prints this message\n\nAt most one of the following three flags:\n\t-x       perform renaming\n\t-k       allocate register");
+            System.err.println("COMP 412, Fall 2023 Lab 2 \nCommand Syntax:\n\t./412fe [flags] filename\n\nRequired arguments:\n\tfilename is the pathname (absolute or relative) to the input file\n\nOptional flags:\n\t-h       prints this message\n\nAt most one of the following three flags:\n\t-x       perform renaming\n\tk       allocate register an integer between 3 and 64");
         }
         else if(xFlag == true){
             flag = 1;
         }
-        else if(kFlag == true){
-            flag = 2;
+        else if(k <3 || k>64){
+            System.err.println("COMP 412, Fall 2023 Lab 2 \nCommand Syntax:\n\t./412fe [flags] filename\n\nRequired arguments:\n\tfilename is the pathname (absolute or relative) to the input file\n\nOptional flags:\n\t-h       prints this message\n\nAt most one of the following three flags:\n\t-x       perform renaming\n\tk       allocate register an integer between 3 and 64");
         }
         if(totalFlag>1){
             System.err.println("COMP 412, Fall 2023 Lab 2 \nCommand Syntax:\n\t./412fe [flags] filename\n\nRequired arguments:\n\tfilename is the pathname (absolute or relative) to the input file\n\nOptional flags:\n\t-h       prints this message\n\nAt most one of the following three flags:\n\t-x       perform renaming\n\t-k       allocate register");
@@ -49,6 +46,7 @@ public class Main{
         }
         if(flag>=1){
             Scanner scan = new Scanner(flag);
+            scan.maxPR = k;
             File f = new File(args[file]);
             scan.readFile(f);
             //System.out.println("scanning");
