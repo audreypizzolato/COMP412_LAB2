@@ -27,13 +27,15 @@ public class Scanner{
     int[] LU;
     //allocating
     Stack<Integer> stackPR = new Stack<Integer>();
-    int x;
     int[] VRToPR;
     int[] PRToVR;
     int[] PRNU;
     int[] markPR;
+    int[] VRtoSpill;
     int pr;
-
+    int spillLoc=32768;
+    int maxLive=0;
+    int reserveReg;
     public Scanner(int flag){
         this.flag = flag;
         // set up transitionStates matrix
@@ -78,6 +80,7 @@ public class Scanner{
         transitionStates[19][14]=20;
         transitionStates[28][14]=29;
         transitionStates[31][14]=32;
+        transitionStates[0][15]=36;
         transitionStates[0][16]=34;
         transitionStates[34][17]=35;
         transitionStates[0][18]=39;
@@ -189,10 +192,15 @@ public class Scanner{
                     }
                     
                     if(transitionChar == 20 || transitionChar == 19 || transitionChar == 15){
-                        long startParse = System.nanoTime();
                         
                         
                         if(rollback == 0 ){
+                            if(transitionChar == 15){
+                                word = ",";
+                                rollback = 36;
+                                currentState = 36;
+                                continue;
+                            }
                             continue;
                         }
  
@@ -261,11 +269,8 @@ public class Scanner{
                         word = "";
                         rollback = 0;
                         currentState = 0;
-                        long endParse = System.nanoTime() - startParse;
-                        endStateTime+=endParse;
                     }
                     else{
-                        long startParse = System.nanoTime();
                         
                         // see if the transition exists
                         if(transitionStates[currentState][transitionChar]>=0){
@@ -695,27 +700,32 @@ public class Scanner{
             LU[i] = -1;
         }
         int vrName =0;
-        int index = correctLinesIR;
         currentIR = tail;
+        int liveCount=0;
         while(currentIR != null){
             if(!currentIR.opcode.equals("output")){
                 if(currentIR.opcode.equals("store")&&currentIR.op1SR!=-1){
                     if(SRToVR[currentIR.op1SR]==-1){
                         SRToVR[currentIR.op1SR] = vrName++;
+                        
                     }
                     currentIR.op1VR = SRToVR[currentIR.op1SR];
                     currentIR.op1NU = LU[currentIR.op1SR];
-                    
+                    liveCount++;
+                    //maxLive = Math.max(liveCount, maxLive);
                 }
                 if(currentIR.op3SR!=-1){
                     if(SRToVR[currentIR.op3SR]==-1){
                         SRToVR[currentIR.op3SR] = vrName++;
+                        liveCount++;
+                        //maxLive = Math.max(liveCount, maxLive);
                     }
                     currentIR.op3VR = SRToVR[currentIR.op3SR];
                     currentIR.op3NU = LU[currentIR.op3SR];
                     if(!currentIR.opcode.equals("store")){
                         SRToVR[currentIR.op3SR] = -1;
                         LU[currentIR.op3SR] = -1;
+                        liveCount--;
                     }
                     
                 }
@@ -723,6 +733,8 @@ public class Scanner{
                 if(currentIR.op1SR!=-1 && !currentIR.opcode.equals("loadI")&&!currentIR.opcode.equals("store")){
                     if(SRToVR[currentIR.op1SR]==-1){
                         SRToVR[currentIR.op1SR] = vrName++;
+                        liveCount++;
+                        //maxLive = Math.max(liveCount, maxLive);
                     }
                     currentIR.op1VR = SRToVR[currentIR.op1SR];
                     currentIR.op1NU = LU[currentIR.op1SR];
@@ -731,19 +743,22 @@ public class Scanner{
                 if(currentIR.op2SR!=-1){
                     if(SRToVR[currentIR.op2SR]==-1){
                         SRToVR[currentIR.op2SR] = vrName++;
+                        liveCount++;
+                        //maxLive = Math.max(liveCount, maxLive);
                     }
                     currentIR.op2VR = SRToVR[currentIR.op2SR];
                     currentIR.op2NU = LU[currentIR.op2SR];
                     
                 }
+                maxLive = Math.max(liveCount, maxLive);
                 if(currentIR.op1SR!=-1){
-                    LU[currentIR.op1SR] = index;
+                    LU[currentIR.op1SR] = currentIR.line - 1;
                 }
                 if(currentIR.op2SR!=-1){
-                    LU[currentIR.op2SR] = index;
+                    LU[currentIR.op2SR] = currentIR.line - 1;
                 }
                 if(currentIR.op3SR!=-1){
-                    LU[currentIR.op3SR] = index;
+                    LU[currentIR.op3SR] = currentIR.line - 1;
                 }
                 
             }
@@ -752,12 +767,36 @@ public class Scanner{
             
         }
     }
-    public int getAPR(int vr, int nu){
+    public int getAPR(int vr, int nu, IR current){
+        int x;
+
         if(!stackPR.isEmpty()){
             x = stackPR.pop();
         }
         else{
-            spill(x);
+            int spillPR=-1;
+            int maxNUVal=-2;
+            for(int i=0; i<maxPR; i++){
+                if(PRNU[i]>maxNUVal && markPR[i] == -1){
+                    spillPR=i;
+                    maxNUVal=PRNU[i];
+                }
+            }
+            int spillVR = PRToVR[spillPR];
+            VRtoSpill[spillVR]=spillLoc;
+            IR loadI = new IR(-1,"loadI",spillLoc,-1,-1,-1,-1,-1,-1,-1,-1,-1,reserveReg,-1);
+            IR store = new IR(-1,"store",-1,spillVR,spillPR,-1,-1,-1,-1,-1,-1,-1,reserveReg,-1);
+            spillLoc+=4;
+            loadI.prev = current.prev;
+            loadI.next = store;
+            store.prev = loadI;
+            store.next = current;
+            current.prev.next = loadI;
+            current.prev = store;
+            VRToPR[spillVR]=-1;
+            PRNU[spillPR]=-1;
+            PRToVR[spillPR]=-1;
+            x = spillPR;
         }
         VRToPR[vr] = x;
         PRToVR[x] = vr;
@@ -774,93 +813,122 @@ public class Scanner{
 
     }
     public void alloc(){
+        maxVR++;
         VRToPR = new int[maxVR];
         PRToVR = new int[maxPR];
         markPR = new int[maxPR];
+        PRNU = new int[maxPR];
+
+        VRtoSpill = new int[maxVR];
         for(int vr=0; vr<maxVR;vr++){
             VRToPR[vr] = -1;
         }
-        for(int pr=0; pr<maxPR; pr++){
+        for(int pr=maxPR-1; pr>=0; pr--){
             PRToVR[pr] = -1;
             PRNU[pr] = -1;
             stackPR.push(pr);
             markPR[pr] = -1;
         }
+        if(stackPR.size()<maxLive){
+            reserveReg = stackPR.pop();
+        }
         currentIR = head;
         while(currentIR != null){
             //clear the mark
-            markPR[currentIR.op1PR] = -1;
-            markPR[currentIR.op2PR] = -1;
-            markPR[currentIR.op3PR] = -1;
+            Arrays.fill(markPR, -1);
             //allocate uses
-            if(!currentIR.opcode.equals("output") || !currentIR.opcode.equals("loadI")){
-                if(currentIR.op1PR!=-1){
+            if(!currentIR.opcode.equals("output") && !currentIR.opcode.equals("loadI")){
+                if(currentIR.op1SR!=-1){
                     pr = VRToPR[currentIR.op1VR];
                     if(pr == -1){
-                        currentIR.op1PR = getAPR(currentIR.op1VR, currentIR.op1NU);
-                        restore(currentIR.op1VR,currentIR.op1PR);
+                        currentIR.op1PR = getAPR(currentIR.op1VR, currentIR.op1NU, currentIR);
+                        PRNU[currentIR.op1PR] = currentIR.op1NU;
+                        restore(currentIR.op1VR,currentIR.op1PR, currentIR);
                     }
                     else{
                         currentIR.op1PR = pr;
+                        PRNU[pr] = currentIR.op1NU;
                     }
-                    markPR[currentIR.op1PR] = currentIR.op1PR;
+                    markPR[currentIR.op1PR] = 1;
                 }
-                if(currentIR.op2PR!=-1){
+                if(currentIR.op2SR!=-1){
                     pr = VRToPR[currentIR.op2VR];
                     if(pr == -1){
-                        currentIR.op2PR = getAPR(currentIR.op2VR, currentIR.op2NU);
-                        restore(currentIR.op2VR,currentIR.op2PR);
+                        currentIR.op2PR = getAPR(currentIR.op2VR, currentIR.op2NU, currentIR);
+                        PRNU[currentIR.op2PR] = currentIR.op2NU;
+                        restore(currentIR.op2VR,currentIR.op2PR, currentIR);
                     }
                     else{
                         currentIR.op2PR = pr;
+                        PRNU[pr] = currentIR.op2NU;
+
                     }
-                    markPR[currentIR.op2PR] = currentIR.op2PR;
+                    markPR[currentIR.op2PR] = 1;
                 }
             }
             if(currentIR.opcode.equals("store")){
-                if(currentIR.op3PR!=-1){
+                if(currentIR.op3SR!=-1){
                     pr = VRToPR[currentIR.op3VR];
                     if(pr == -1){
-                        currentIR.op3PR = getAPR(currentIR.op3VR, currentIR.op3NU);
-                        restore(currentIR.op3VR,currentIR.op3PR);
+                        currentIR.op3PR = getAPR(currentIR.op3VR, currentIR.op3NU, currentIR);
+                        PRNU[currentIR.op3PR] = currentIR.op3NU;
+                        restore(currentIR.op3VR,currentIR.op3PR, currentIR);
                     }
                     else{
                         currentIR.op3PR = pr;
+                        PRNU[pr] = currentIR.op3NU;
                     }
-                    markPR[currentIR.op3PR] = currentIR.op3PR;
+                    markPR[currentIR.op3PR] = 1;
                 }
             }
             //last use
-            if(!currentIR.opcode.equals("output") || !currentIR.opcode.equals("loadI")){
-                if(currentIR.op1NU == -1 && currentIR.op1PR!=-1){
+            if(!currentIR.opcode.equals("output") && !currentIR.opcode.equals("loadI")){
+                if(currentIR.op1NU == -1 && currentIR.op1PR!=-1 && PRToVR[currentIR.op1PR] > -1){
                     freeAPR(currentIR.op1PR);
                 }
-                if(currentIR.op2NU == -1 && currentIR.op2PR!=-1){
+                if(currentIR.op2NU == -1 && currentIR.op2PR!=-1 && PRToVR[currentIR.op2PR] > -1){
                     freeAPR(currentIR.op2PR);
                 }
             }
             if(currentIR.opcode.equals("store")){
-                if(currentIR.op3NU == -1 && currentIR.op3PR!=-1){
+                if(currentIR.op3NU == -1 && currentIR.op3PR!=-1 && PRToVR[currentIR.op3PR] > -1){
                     freeAPR(currentIR.op3PR);
                 }
             }
             //clear the mark
-            markPR[currentIR.op1PR] = -1;
-            markPR[currentIR.op2PR] = -1;
-            markPR[currentIR.op3PR] = -1;
+            Arrays.fill(markPR, -1);
+
             //allocate def
-            if(!currentIR.opcode.equals("store")){
-                currentIR.op3PR = getAPR(currentIR.op3VR, currentIR.op3NU);
-                markPR[currentIR.op3PR] = currentIR.op3PR;
+            if(!currentIR.opcode.equals("store")&&currentIR.op3VR!=-1){
+                currentIR.op3PR = getAPR(currentIR.op3VR, currentIR.op3NU, currentIR);
+                PRNU[currentIR.op3PR] = currentIR.op3NU;
+                markPR[currentIR.op3PR] = 1;
+                if (currentIR.op3NU == -1) {
+                    PRToVR[currentIR.op3PR] = -1;
+                    stackPR.push(currentIR.op3PR);
+                }
             }
             currentIR = currentIR.getNext();
         }
             
 
     }
-    public void spill(int x){
+    
+    public void restore(int vr , int pr, IR current){
+        int restoreLocation = VRtoSpill[vr];
 
+        IR loadI = new IR(-1,"loadI",restoreLocation,-1,-1,-1,-1,-1,-1,-1,-1,-1,reserveReg,-1);
+        IR load = new IR(-1,"load",-1,-1,reserveReg,-1,-1,-1,-1,-1,-1,vr,pr,-1);
+        loadI.prev = current.prev;
+        loadI.next = load;
+        load.prev = loadI;
+        load.next = current;
+        current.prev.next = loadI;
+        current.prev = load;
+
+        VRtoSpill[vr] = -1;
     }
+
     
     
-}
+}  

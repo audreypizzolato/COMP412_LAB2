@@ -24,7 +24,10 @@ public class Main{
         //flags h=0, x=1 
         int flag=-1;
         int file=args.length-1;
-        k = Integer.parseInt(args[0]);
+        if(!xFlag){
+            k = Integer.parseInt(args[0]);
+        }
+        
         
         if(totalFlag == 0){
             //-p flag
@@ -55,9 +58,11 @@ public class Main{
             success = scan.parser();
             if(success){
                 scan.renaming();
-                IR currentIR = scan.head;
-                String output;
-                while(currentIR != null){
+                if(!xFlag){
+                    scan.alloc();
+                    IR currentIR = scan.head;
+                    String output;
+                    while(currentIR != null){
                     output="";
                     output+=currentIR.opcode;
                     if(currentIR.opcode.equals("output")){
@@ -70,14 +75,46 @@ public class Main{
                         if(currentIR.opcode.equals("loadI") && currentIR.op1SR!=-1){
                             output+=" "+Integer.toString(currentIR.op1SR);
                         }
-                        else if(currentIR.op1SR!=-1){
+                        else if(currentIR.op1PR!=-1){
+                            output+=" r"+Integer.toString(currentIR.op1PR);
+                        }
+                        if(currentIR.op2PR!=-1){
+                            output+=", r"+Integer.toString(currentIR.op2PR);
+                        }
+                        output+=" =>";
+                        if(currentIR.op3PR!=-1){
+                            output+=" r"+Integer.toString(currentIR.op3PR);
+                        }
+                        
+                    }
+                    System.out.println(output);
+                    currentIR = currentIR.next;
+                    
+                    }
+                } else {
+                    IR currentIR = scan.head;
+                    String output;
+                    while(currentIR != null){
+                    output="";
+                    output+=currentIR.opcode;
+                    if(currentIR.opcode.equals("output")){
+                        output+=" "+Integer.toString(currentIR.op1SR);
+                    }
+                    else if(currentIR.opcode.equals("nop")){
+                        
+                    }
+                    else{
+                        if(currentIR.opcode.equals("loadI") && currentIR.op1SR!=-1){
+                            output+=" "+Integer.toString(currentIR.op1SR);
+                        }
+                        else if(currentIR.op1VR!=-1){
                             output+=" r"+Integer.toString(currentIR.op1VR);
                         }
-                        if(currentIR.op2SR!=-1){
+                        if(currentIR.op2VR!=-1){
                             output+=", r"+Integer.toString(currentIR.op2VR);
                         }
                         output+=" =>";
-                        if(currentIR.op3SR!=-1){
+                        if(currentIR.op3VR!=-1){
                             output+=" r"+Integer.toString(currentIR.op3VR);
                         }
                         
@@ -85,7 +122,9 @@ public class Main{
                     System.out.println(output);
                     currentIR = currentIR.next;
                     
+                    }
                 }
+                
             }
 
 
